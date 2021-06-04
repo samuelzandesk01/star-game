@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const MyStar = (props) => {
   return utils
     .range(1, props.count)
-    .map((starId) => <div key={starId}  />);
+    .map((starId) => <div key={starId} className="star" />);
 };
 
 const MyBtn = (props) => {
@@ -20,12 +20,29 @@ const MyBtn = (props) => {
   );
 };
 
+const PlayGameAgain = (props) => {
+  return (
+    <div className="game-done">
+      <button className="" onClick={props.onClick}>
+        Play Again
+      </button>
+    </div>
+  );
+};
+
 const myApp = (props) => {
   const [stars, setCount] = useState(utils.random(1, 9));
   const [availableNums, setAvailNum] = useState(utils.range(1, 9));
   const [candidateNums, setCandidate] = useState([]);
 
   const candidateAreWrong = utils.sum(candidateNums) > stars;
+  const gameIsDone = availableNums.lenght === 0;
+
+  const resetGame = () => {
+    setCount(utils.random(1, 9));
+    setAvailNum(utils.range(1, 9));
+    setCandidate([]);
+  };
 
   const numberStatus = (num) => {
     if (!availableNums.includes(num)) {
@@ -67,7 +84,11 @@ const myApp = (props) => {
 
       <div className="body">
         <div className="left">
-          <MyStar count={stars} className="star" />
+          {gameIsDone ? (
+            <PlayGameAgain onClick={resetGame} gameStatuz="Play Again" />
+          ) : (
+            <MyStar count={stars} />
+          )}
         </div>
         <div className="right">
           {utils.range(1, 9).map((numId) => (

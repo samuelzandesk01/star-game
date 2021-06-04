@@ -46,6 +46,7 @@
   border: thin solid #ddd;
   width: 45px;
   height: 45px;
+  cursor: pointer;
   margin: 10px;
   font-size: 25px;
 }

@@ -1,14 +1,8 @@
 {
-  "name": "rzehn",
+  "name": "game",
   "version": "1.0.0",
-  "description": null,
-  "keywords": [
-    "dev",
-    "frontend",
-    "reactjs",
-    "game",
-    "react"
-  ],
+  "description": "",
+  "keywords": [],
   "main": "src/index.js",
   "dependencies": {
     "react": "17.0.2",
